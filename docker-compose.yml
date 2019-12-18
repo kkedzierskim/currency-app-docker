@@ -1,0 +1,23 @@
+version: '3'
+services:
+  api:
+    build: ./currency-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - databases
+  databases:
+    container_name: 'databases'
+    image: mysql
+    environment:
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_DATABASE: currencydb
+    ports:
+      - "3306:3306"
+    restart: always
+
+
+
+ 
